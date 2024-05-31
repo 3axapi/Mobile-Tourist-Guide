@@ -16,4 +16,5 @@
     <string name="comment_edit">» Your comment</string>
     <string name="star_rating">"Star Raiting "</string>
     <string name="button_send">SEND</string>
+    <string name="landscape_place">Landscape place</string>
 </resources>

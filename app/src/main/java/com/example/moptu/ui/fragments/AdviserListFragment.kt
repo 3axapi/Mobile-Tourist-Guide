@@ -8,13 +8,15 @@ import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.example.moptu.R
 import com.example.moptu.adapters.ImagesGridAdapter
+import com.example.moptu.adapters.OnImageClickListener
 import com.example.moptu.model.Places
 
-class AdviserListFragment : Fragment() {
+class AdviserListFragment : Fragment(), OnImageClickListener {
     lateinit var gridView: GridView
     lateinit var listOfPlaces: List<Places.Place>
     lateinit var listOfTitles: List<String>
     lateinit var listOfImages: List<Int>
+    lateinit var listOfDescriptions: List<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +35,18 @@ class AdviserListFragment : Fragment() {
         listOfPlaces = Places.getPlaces()
         listOfTitles = listOfPlaces.map { it.title }
         listOfImages = listOfPlaces.map { it.imageResId }
+        listOfDescriptions = listOfPlaces.map { it.description }
         gridView = view.findViewById(R.id.gridView_places)
-        gridView.adapter = ImagesGridAdapter(requireContext(), listOfTitles, listOfImages)
+        gridView.adapter = ImagesGridAdapter(
+            requireContext(), listOfTitles, listOfImages, listOfDescriptions, this
+        )
+    }
+
+    override fun onImageClick(placeTitle: String, imageId: Int, placeDescription: String) {
+        val detailsFragment: AdviserDetailFragment = AdviserDetailFragment.newInstance(placeTitle, imageId, placeDescription)
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.welcome_fragment, detailsFragment)
+            ?.addToBackStack(null)
+            ?.commit()
     }
 }

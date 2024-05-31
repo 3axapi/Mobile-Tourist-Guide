@@ -1,5 +1,6 @@
 package com.example.moptu.adapters
 
+import android.content.ClipDescription
 import android.content.Context
 import android.graphics.Typeface
 import android.media.Image
@@ -17,10 +18,16 @@ import com.example.moptu.R
 import com.example.moptu.model.Places
 import kotlinx.coroutines.newFixedThreadPoolContext
 
+interface OnImageClickListener {
+    fun onImageClick(placeTitle: String, imageId: Int, placeDescription: String)
+}
+
 class ImagesGridAdapter (
     private val context: Context,
     private val titlesList: List<String>,
-    private val imagesList: List<Int>
+    private val imagesList: List<Int>,
+    private val descriptionList: List<String>,
+    private val listener: OnImageClickListener
     ) : BaseAdapter() {
     override fun getCount(): Int = imagesList.size
 
@@ -71,6 +78,9 @@ class ImagesGridAdapter (
         }
 
         imageView.setImageResource(imagesList[position])
+        linearLayout.setOnClickListener {
+            listener.onImageClick(titlesList[position], imagesList[position], descriptionList[position])
+        }
 
         return linearLayout
     }
