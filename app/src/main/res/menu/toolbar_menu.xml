@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home_icon"
+        android:icon="@drawable/baseline_home"
+        app:showAsAction="ifRoom"
+        android:title="@string/home_icon" />
+    <item
+        android:id="@+id/places_icon"
+        android:icon="@drawable/baseline_places"
+        app:showAsAction="ifRoom"
+        android:title="@string/places_icon" />
+    <item
+        android:id="@+id/comment_icon"
+        android:icon="@drawable/baseline_comment"
+        app:showAsAction="ifRoom"
+        android:title="@string/comment_icon" />
+</menu>

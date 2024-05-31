@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MoPTu</string>
-    <string name="bar_name">Przewodnik Turystyczny</string>
+    <string name="bar_name">Tourist Guide</string>
+    <string name="home_icon">Home</string>
+    <string name="places_icon">Places</string>
+    <string name="comment_icon">Comment</string>
 </resources>
